@@ -1,0 +1,14 @@
+{
+  "name": "combo-server-api",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A test Node.js app using docker",
+  "author": "Andy Kellerstrass",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

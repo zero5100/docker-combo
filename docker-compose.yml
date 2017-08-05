@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  server-api:
+    build: ./server-api
+    volumes:
+      - ./server-api:/home/node/app
+      - /home/node/app/node_modules
+    ports:
+      - "8080:3000"
+    environment:
+      - NODE_ENV=local
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
