@@ -1,17 +1,38 @@
 version: '3'
 
 services:
+  client-web:
+    build: ./client-web
+    volumes:
+      - ./client-web/public:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - server-api
+    networks:
+      - combo-client
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
   server-api:
     build: ./server-api
     volumes:
       - ./server-api:/home/node/app
       - /home/node/app/node_modules
-    ports:
-      - "8080:3000"
     environment:
       - NODE_ENV=local
+    networks:
+      combo-client:
+      combo-backend:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 30s
       timeout: 10s
       retries: 3
+
+networks:
+  combo-client:
+  combo-backend:

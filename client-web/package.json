@@ -1,0 +1,9 @@
+{
+  "name": "combo-client-web",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A test web server using nginx",
+  "author": "Andy Kellerstrass",
+  "scripts": {
+  }
+}
