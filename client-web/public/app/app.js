@@ -14,7 +14,8 @@ xhttpAPI.send();
 var xhttpDB = new XMLHttpRequest();
 xhttpDB.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
-    document.getElementById("test-database").innerHTML = this.responseText;
+    var response = this.response;
+    document.getElementById("test-database").innerHTML = response;
   } else if (this.readyState == 4) {
     alert("Database is down!");
   }

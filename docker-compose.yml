@@ -34,6 +34,8 @@ services:
 
   database:
     image: postgres:9.5-alpine
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_USER: combo_app_user
       POSTGRES_DB: combo_local

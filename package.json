@@ -5,7 +5,8 @@
   "description": "Combined projects",
   "author": "Andy Kellerstrass",
   "scripts": {
-    "start": "npm run build && docker-compose up -d",
+    "prestart": "npm run build",
+    "start": "docker-compose up -d",
     "stop": "docker-compose down",
     "build": "docker-compose build"
   }

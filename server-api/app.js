@@ -4,7 +4,7 @@ const express = require("express")
 const db = require("./db");
 
 db.create("people", {
-  name: "John Cena"
+  name: "John Cenaaaaa"
 })
 .catch((err) => {
   console.error("DB DID BAD", err);
@@ -21,7 +21,7 @@ app.get("/api/name", function(req, res) {
 
   db.all("people")
   .then(function(people) {
-    res.send("HIS NAME IS " + people);
+    res.send("HIS NAME IS " + people[0].name);
   })
   .catch((err) => {
     res.send("BAD THING " + err);

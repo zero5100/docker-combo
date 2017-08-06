@@ -10,10 +10,9 @@ const pool = new Pool({
 function query(qs) {
   console.log("Running query: ", qs);
 
-  // client.connect();
   return pool.query(qs)
   .then((result) => {
-    pool.end();
+
     return result.rows;
   });
 }
