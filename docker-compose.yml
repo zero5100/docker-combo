@@ -2,6 +2,7 @@ version: '3'
 
 services:
   client-web:
+    image: combo-client-web:latest
     build: ./client-web
     volumes:
       - ./client-web/public/:/var/www/html/
@@ -19,6 +20,7 @@ services:
       retries: 3
 
   server-api:
+    image: combo-server-api:latest
     build: ./server-api
     command: [ "npm", "run", "start-local" ]
     volumes:
