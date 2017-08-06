@@ -5,8 +5,8 @@
   "description": "Combined projects",
   "author": "Andy Kellerstrass",
   "scripts": {
-    "start": "docker-compose -p combo up -d",
-    "stop": "docker-compose -p combo down",
-    "build": "docker-compose -p combo build"
+    "start": "docker-compose up -d",
+    "stop": "docker-compose combo down",
+    "build": "docker-compose combo build"
   }
 }
