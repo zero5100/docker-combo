@@ -1,14 +1,35 @@
-const express = require('express')
+const express = require("express")
     , app = express();
 
+const db = require("./db");
+
+db.create("people", {
+  name: "John Cena"
+})
+.catch((err) => {
+  console.error("DB DID BAD", err);
+});
+
 // app.use("/", express.static("public"));
-app.get('/api', function(req, res) {
+app.get("/api", function(req, res) {
   console.log("Got request on /api");
-  res.send('Hello Buddy!');
+  res.send("Hello Buddy!");
+});
+
+app.get("/api/name", function(req, res) {
+  console.log("Got request on /api/name");
+
+  db.all("people")
+  .then(function(people) {
+    res.send("HIS NAME IS " + people);
+  })
+  .catch((err) => {
+    res.send("BAD THING " + err);
+  });
 });
 
 const server = app.listen(3000, function() {
-  console.log('combo-server-api listening on port 3000!');
+  console.log("combo-server-api listening on port 3000!");
 });
 
 module.exports.app = app;

@@ -13,11 +13,7 @@ services:
       - server-api
     networks:
       - client-network
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+    restart: unless-stopped
 
   server-api:
     image: combo-server-api:latest
@@ -26,16 +22,24 @@ services:
     volumes:
       - ./server-api:/home/node/app
       - /home/node/app/node_modules
+    depends_on:
+      - database
     environment:
       - NODE_ENV=local
+      - DATABASE_URL=postgresql://combo_app_user@database/combo_local
     networks:
       client-network:
       server-network:
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+    restart: unless-stopped
+
+  database:
+    image: postgres:9.5-alpine
+    environment:
+      POSTGRES_USER: combo_app_user
+      POSTGRES_DB: combo_local
+    networks:
+      server-network:
+    restart: unless-stopped
 
 networks:
   client-network:

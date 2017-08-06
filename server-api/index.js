@@ -35,5 +35,5 @@ if (!process.env.NODE_ENV) {
 console.log("Config OK!");
 
 console.log("Loading app...");
-const server = require('./app.js').server;
+const server = require('./app').server;
 console.log("App OK!");
