@@ -5,5 +5,9 @@
   "description": "A test web server using nginx",
   "author": "Andy Kellerstrass",
   "scripts": {
+    "start": "echo 'combo-client-web can only be ran from docker-compose'",
+    "build": "docker build -t combo-client-web ."
+  },
+  "devDependencies": {
   }
 }

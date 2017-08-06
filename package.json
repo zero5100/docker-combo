@@ -1,0 +1,12 @@
+{
+  "name": "combo-project",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Combined projects",
+  "author": "Andy Kellerstrass",
+  "scripts": {
+    "start": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "build": "docker-compose build"
+  }
+}

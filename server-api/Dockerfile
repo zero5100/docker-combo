@@ -1,4 +1,4 @@
-FROM node:4
+FROM node:6
 
 # Set the working directory to /app
 WORKDIR /home/node/app

@@ -4,7 +4,8 @@ services:
   client-web:
     build: ./client-web
     volumes:
-      - ./client-web/public:/var/www/html
+      - ./client-web/public/:/var/www/html/
+      - ./client-web/config/nginx.local.conf:/etc/nginx/conf.d/nginx.env.conf:ro
     ports:
       - "8080:80"
     depends_on:
@@ -19,6 +20,7 @@ services:
 
   server-api:
     build: ./server-api
+    command: [ "npm", "run", "start-local" ]
     volumes:
       - ./server-api:/home/node/app
       - /home/node/app/node_modules
@@ -28,7 +30,7 @@ services:
       combo-client:
       combo-backend:
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api"]
       interval: 30s
       timeout: 10s
       retries: 3
