@@ -3,13 +3,6 @@ const express = require("express")
 
 const db = require("./db");
 
-db.create("people", {
-  name: "John Cenaaaaa"
-})
-.catch((err) => {
-  console.error("DB DID BAD", err);
-});
-
 // app.use("/", express.static("public"));
 app.get("/api", function(req, res) {
   console.log("Got request on /api");
